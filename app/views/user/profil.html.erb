@@ -1,0 +1,29 @@
+<% content_for :head do %>
+  Profil
+<% end %>
+
+<% content_for :content do %>
+  <div class="container-fluid mb-12">
+    <div class="row mt-40">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Vos Informations
+          </div>
+          <div class="card-body">
+              <p>Nom: <%= @user.name %> </p>
+              <p>Email: <%= @user.email %></p>
+          </div>
+          <div class="card-footer">
+            Profil - Informations - Tweet
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
+
+  </div>
+<% end %>

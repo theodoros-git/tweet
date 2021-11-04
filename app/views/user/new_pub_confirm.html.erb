@@ -1,0 +1,36 @@
+<% content_for :head do %>
+  Confirmation - Nouveau Tweet
+<% end %>
+
+<% content_for :content do %>
+  <div class="container-fluid mb-12">
+    <div class="row mt-40">
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Veuillez Confirmer votre nouveau tweet.
+          </div>
+          <div class="card-body">
+
+              <p><%= @publication.content %></p>
+              <%= form_with(model: @publication, local: true, url: users_newpubconfirmform_path) do |form| %>
+
+                <%= form.hidden_field :content %>
+                <%= form.submit "Confirmer", class: "btn btn-primary" %>
+              <% end %>
+          </div>
+          <div class="card-footer">
+            Confirmation - Nouvelle tweet - Tweet
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
+
+  </div>
+<% end %>

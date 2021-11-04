@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Connection ou Inscription - Tweet</title>
+
+		<%= render "layouts/components/css" %>
+	</head>
+
+	<body>
+
+
+		<div class="container" >
+
+	      <div class="row " style="margin-top: 150px;">
+
+	        <div class="col-md-4" style="margin-top: 40px;">
+	        </div>
+
+	        <div class="col-md-4">
+
+	          <div class="card">
+	            <div class="card-body ">
+
+	              <div class="errors">
+	                    <% if flash[:register_success] %>
+	                        <p class="alert alert-success"> <%= flash[:register_success] %></p>
+	                    <%end%>
+	                    <% if flash[:login_errors] %>
+	                        <p class="alert alert-danger"> <%= flash[:login_errors] %></p>
+	                    <%end%>
+	                    <% if flash[:notice_logout] %>
+	                        <p class="alert alert-success"> <%= flash[:notice_logout] %></p>
+	                    <%end%>
+	              </div>
+
+	              <form method="post" action="<%= users_login_path %>">
+
+
+	                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+	                <div class="form-outline mb-4">
+	                  <input type="email" id="email" class="form-control" name="login[email]" />
+	                  <label class="form-label" for="email">Adresse e-mail ou numéro de tel.</label>
+	                </div>
+
+	                <!-- Password input -->
+	                <div class="form-outline mb-4">
+	                  <input type="password" id="password" class="form-control" name="login[password]"/>
+	                  <label class="form-label" for="password">Mot de passe</label>
+	                </div>
+
+	                <!-- 2 column grid layout for inline styling -->
+
+
+	                <!-- Submit button -->
+	                <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+	                <br>
+	                <div class="row  text-center">
+
+
+	                  <div class="col">
+	                    <!-- Simple link -->
+	                    <a href="#!"> Mot de passe oublié ?</a>
+	                  </div>
+	                </div>
+	              </form>
+	              <hr>
+
+	              <div class="text-center mt-4">
+	              	<%= link_to 'Créer nouveau compte', users_signup_path, class: "btn btn-success" %>
+	              </div>
+
+	            </div>
+
+
+	          </div>
+	          <br>
+
+	        </div>
+
+	        <div class="col-md-4"></div>
+
+	      </div>
+
+	    </div>
+
+
+		<%= render "layouts/components/js" %>
+	</body>
+
+</html>

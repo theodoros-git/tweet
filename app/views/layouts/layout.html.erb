@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title> <%= yield :head %> - Tweet</title>
+
+		<%= render "layouts/components/css" %>
+	</head>
+
+	<body>
+		<%= render "layouts/components/header" %>
+
+		<%= yield :content %>
+
+		<%= render "layouts/components/footer" %>
+		<%= render "layouts/components/js" %>
+	</body>
+
+</html>

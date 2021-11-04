@@ -1,0 +1,61 @@
+<% content_for :head do %>
+  Tableau de bord
+<% end %>
+
+<% content_for :content do %>
+  <div class="container-fluid">
+    <div class="row">
+      <% if flash[:pub_success] %>
+          <p class="alert alert-success"> <%= flash[:pub_success] %></p>
+      <%end%>
+      <% if flash[:pub_destroy] %>
+          <p class="alert alert-warning"> <%= flash[:pub_destroy] %></p>
+      <%end%>
+      <% if flash[:pub_update] %>
+          <p class="alert alert-success"> <%= flash[:pub_update] %></p>
+      <%end%>
+      <% if flash[:comment_success] %>
+          <p class="alert alert-success"> <%= flash[:comment_success] %></p>
+      <%end%>
+    </div>
+    <% @posts.each do |publication| %>
+      <div class="row mb-12">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-user"></i> &nbsp;
+              <% @users.each do |user| %>
+                <% if user.id == publication.user_id %>
+                  <%= user.name %> &nbsp;
+                <%end%>
+              <%end%>
+            </div>
+            <div class="card-body">
+              <%= publication.content %>
+              <br>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body pt-56 flex pl-0">
+
+                <% if session[:current_user_id] == publication.user_id %>
+
+                  <a href="<%= users_edit_path(publication) %>" class="btn btn-info">Modifier</a>&nbsp;&nbsp;
+                  <a href="<%= users_destroypub_path(publication) %>" class="btn btn-danger">Supprimer</a>
+                <%else%>
+                  
+                <%end%>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+
+  </div>
+<% end %>
